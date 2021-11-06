@@ -1,9 +1,10 @@
-package com.example.retrofitcourse
+package com.example.retrofitcourse.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.retrofitcourse.databinding.ListItemBinding
+import com.example.retrofitcourse.models.Comment
 
 class PhotoAdapter(val comments: List<Comment>) : RecyclerView.Adapter<PhotoAdapter.PhotoViewHolder>() {
 

@@ -1,7 +1,7 @@
-package com.example.retrofitcourse
+package com.example.retrofitcourse.network
 
+import com.example.retrofitcourse.models.Comment
 import retrofit2.Call
-import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
