@@ -9,49 +9,18 @@ import com.example.retrofitcourse.network.ApiService
 import com.example.retrofitcourse.R
 import com.example.retrofitcourse.databinding.ActivityMainBinding
 import com.example.retrofitcourse.models.Comment
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.example.retrofitcourse.network.CommentRepository
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var binding:ActivityMainBinding
-
+    lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding =  DataBindingUtil.setContentView(this, R.layout.activity_main)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        binding.refreshLayout.setOnRefreshListener {
-            refreshComment()
-        }
-
-        refreshComment()
-    }
-
-    private fun refreshComment(){
-        binding.refreshLayout.isRefreshing = true
-        ApiService().getPhotos().enqueue(object: Callback<List<Comment>>{
-            override fun onResponse(call: Call<List<Comment>>, response: Response<List<Comment>>) {
-
-                binding.refreshLayout.isRefreshing = false
-
-                val photos = response.body()
-
-                photos?.let {
-                    showPhoto(it)
-                }
-            }
-
-            override fun onFailure(call: Call<List<Comment>>, t: Throwable) {
-                binding.refreshLayout.isRefreshing = false
-                Toast.makeText(applicationContext, t.message, Toast.LENGTH_SHORT).show()
-            }
-
-        })
-    }
-
-    private fun showPhoto(photos: List<Comment>){
-        binding.recyclerView.layoutManager = LinearLayoutManager(this)
-        binding.recyclerView.adapter = PhotoAdapter(photos)
     }
 }
