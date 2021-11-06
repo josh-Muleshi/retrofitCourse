@@ -65,4 +65,7 @@ dependencies {
 
     implementation "com.google.dagger:hilt-android:2.38.1"
     kapt "com.google.dagger:hilt-compiler:2.38.1"
+
+    implementation 'org.kodein.di:kodein-di-generic-jvm:6.2.1'
+    implementation 'org.kodein.di:kodein-di-framework-android-x:6.2.1'
 }
